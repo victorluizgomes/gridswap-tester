@@ -243,8 +243,8 @@ function createBoardFromInput() {
     const input4 = document.getElementById("point4");
 
     clearBoard(false);
-    const inputBoard = [input1.value, input2.value, input3.value, input4.value];
-    g = new Graph(inputBoard);
+    random = [input1.value, input2.value, input3.value, input4.value];
+    g = new Graph(random);
 }
 
 document.addEventListener('keydown', function(event) {
