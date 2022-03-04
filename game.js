@@ -236,6 +236,17 @@ function clearBoard(addTiles) {
 
 }
 
+function createBoardFromInput() {
+    const input1 = document.getElementById("point1");
+    const input2 = document.getElementById("point2");
+    const input3 = document.getElementById("point3");
+    const input4 = document.getElementById("point4");
+
+    clearBoard(false);
+    const inputBoard = [input1.value, input2.value, input3.value, input4.value];
+    g = new Graph(inputBoard);
+}
+
 document.addEventListener('keydown', function(event) {
     console.log('Current Position', currentPosition);
     if(event.keyCode == 37) {

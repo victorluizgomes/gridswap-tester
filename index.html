@@ -143,6 +143,14 @@
             </div>
         </div>
     </div>
+    <p style="font-weight: bold; color: white; margin-top: 1rem;">Create board with specific black tiles:</p>
+    <div class="row button-wrapper">
+        <input class="num-input" maxlength="2" value="1" type="number" step="1" id="point1" name="point1" />
+        <input class="num-input" maxlength="2" value="2" type="number" step="1" id="point2" name="point2" />
+        <input class="num-input" maxlength="2" value="3" type="number" step="1" id="point3" name="point3" />
+        <input class="num-input" maxlength="2" value="4" type="number" step="1" id="point4" name="point4" />
+        <button class="margin-left" onclick="createBoardFromInput()">Submit</button>
+    </div>
 </body>
 <script src="./game.js"></script>
 </html>
