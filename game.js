@@ -179,6 +179,9 @@ class Graph {
 // USER MOVEMENT GAME
 let currentPosition = 0;
 let actionOrders = [];
+let points = 0;
+let pointsHtml = document.getElementById('points');
+pointsHtml.innerHTML = points;
 
 let random = [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)];
 let g = new Graph(random);
@@ -229,11 +232,11 @@ function clearBoard(addTiles) {
         curr.innerHTML = i.toString();
     }
     currentPosition = 0;
+    points = 0;
     actionOrders = [];
 
     if (addTiles)
         g = new Graph(random);
-
 }
 
 function createBoardFromInput() {
@@ -268,6 +271,7 @@ document.addEventListener('keydown', function(event) {
 
         curr = document.getElementById(currentPosition.toString());
         curr.classList.add("player");
+        points += 1;
     }
     else if(event.keyCode == 39) {
         console.log('Moved Right');
@@ -287,6 +291,7 @@ document.addEventListener('keydown', function(event) {
         curr.appendChild(bar);
         curr = document.getElementById(currentPosition.toString());
         curr.classList.add("player");
+        points += 1;
     }
     else if(event.keyCode == 38) {
         console.log('Moved Up');
@@ -306,6 +311,7 @@ document.addEventListener('keydown', function(event) {
         curr.appendChild(bar);
         curr = document.getElementById(currentPosition.toString());
         curr.classList.add("player");
+        points += 1;
     }
     else if(event.keyCode == 40) {
         console.log('Moved Down');
@@ -325,7 +331,11 @@ document.addEventListener('keydown', function(event) {
         curr.appendChild(bar);
         curr = document.getElementById(currentPosition.toString());
         curr.classList.add("player");
+        points += 1;
     }
+
+    let pointsHtml = document.getElementById('points');
+    pointsHtml.innerHTML = points;
     //console.log(actionOrders);
 });
 

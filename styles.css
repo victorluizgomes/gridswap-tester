@@ -25,6 +25,12 @@ button {
     margin-left: 5px;
 }
 
+.label {
+    color: white;
+    margin: auto;
+    margin-left: 5rem;
+}
+
 .tile {
     font-size: medium;
     text-align: right;
