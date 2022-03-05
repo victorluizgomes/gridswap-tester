@@ -179,6 +179,7 @@ class Graph {
 // USER MOVEMENT GAME
 let currentPosition = 0;
 let actionOrders = [];
+let actionNumberOrder = [];
 let points = 0;
 let pointsHtml = document.getElementById('points');
 pointsHtml.innerHTML = points;
@@ -250,12 +251,62 @@ function createBoardFromInput() {
     g = new Graph(random);
 }
 
+function clearSpecificTile(num) {
+    var odds = true;
+    for(var i = 1; i <= 99; i++) {
+        if (i % 10 === 0) {
+            odds = !odds;
+        }
+        if (i === num) {
+            if (odds) {
+                if (i % 2 !== 0) {
+                    curr = document.getElementById(i.toString());
+                    curr.className = "";
+                    curr.classList.add("tile-b");
+                } else {
+                    curr = document.getElementById(i.toString());
+                    curr.className = "";
+                    curr.classList.add("tile");
+                }
+            } else {
+                if (i % 2 !== 0) {
+                    curr = document.getElementById(i.toString());
+                    curr.className = "";
+                    curr.classList.add("tile");
+                } else {
+                    curr = document.getElementById(i.toString());
+                    curr.className = "";
+                    curr.classList.add("tile-b");
+                }
+            }
+            this.removeAllChildNodes(curr);
+            curr.innerHTML = i.toString();
+        }
+    }
+}
+
+function goBack() {
+    this.clearSpecificTile(currentPosition);
+    const lastMove = actionNumberOrder.pop();
+    actionOrders.pop();
+    points -= 1;
+
+    currentPosition = lastMove;
+    this.clearSpecificTile(lastMove);
+    const lastMoveEl = document.getElementById(lastMove.toString());
+    lastMoveEl.classList.add("player");
+
+    let pointsHtml = document.getElementById('points');
+    pointsHtml.innerHTML = points;
+}
+
 document.addEventListener('keydown', function(event) {
     console.log('Current Position', currentPosition);
     if(event.keyCode == 37) {
         console.log('Moved Left');
         actionOrders.push('left');
         curr = document.getElementById(currentPosition.toString());
+        actionNumberOrder.push(currentPosition);
         currentPosition -= 1;
         curr.classList.add("visited");
 
@@ -277,6 +328,7 @@ document.addEventListener('keydown', function(event) {
         console.log('Moved Right');
         actionOrders.push('right');
         curr = document.getElementById(currentPosition.toString());
+        actionNumberOrder.push(currentPosition);
         currentPosition += 1;
         curr.classList.add("visited");
 
@@ -297,6 +349,7 @@ document.addEventListener('keydown', function(event) {
         console.log('Moved Up');
         actionOrders.push('up');
         curr = document.getElementById(currentPosition.toString());
+        actionNumberOrder.push(currentPosition);
         currentPosition -= 10;
         curr.classList.add("visited");
 
@@ -317,6 +370,7 @@ document.addEventListener('keydown', function(event) {
         console.log('Moved Down');
         actionOrders.push('down');
         curr = document.getElementById(currentPosition.toString());
+        actionNumberOrder.push(currentPosition);
         currentPosition += 10;
         curr.classList.add("visited");
 

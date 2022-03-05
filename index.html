@@ -8,6 +8,7 @@
     <div class="row button-wrapper">
         <button onclick="clearBoardRandomize()">Clear and Randomize</button>
         <button class="margin-left" onclick="clearBoard(true)">Clear</button>
+        <button class="margin-left" onclick="goBack()">Go Back</button>
         <div class="row">
             <p class="label">Points: </p><span class="label" style="margin-left: 0.5rem" id="points"></span>
         </div>
@@ -147,12 +148,15 @@
         </div>
     </div>
     <p style="font-weight: bold; color: white; margin-top: 1rem;">Create board with specific black tiles:</p>
-    <div class="row button-wrapper">
+    <div class="row button-wrapper" style="margin-bottom: 0.3rem;">
         <input class="num-input" maxlength="2" value="1" type="number" step="1" id="point1" name="point1" />
         <input class="num-input" maxlength="2" value="2" type="number" step="1" id="point2" name="point2" />
         <input class="num-input" maxlength="2" value="3" type="number" step="1" id="point3" name="point3" />
         <input class="num-input" maxlength="2" value="4" type="number" step="1" id="point4" name="point4" />
         <button class="margin-left" onclick="createBoardFromInput()">Submit</button>
+    </div>
+    <div class="row">
+        <p style="font-weight: bold; color: white;">If you enjoyed consider giving me a follow at: </p> <a class="link" target="_blank" href="https://twitter.com/artofvictorg">@ArtOfVictorG</a>
     </div>
 </body>
 <script src="./game.js"></script>
